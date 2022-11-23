@@ -1,0 +1,191 @@
+{
+  _id: '63748b71c8d15150992b4eda',
+  character_id: 26025,
+  rare: 6,
+  max_level: 1,
+  cost: 1,
+  max_bug: 99,
+  is_ex: 0,
+  color: 'green',
+  name: 'Omega Badge [Lilith]',
+  main_tribe: 'QUEEN',
+  sub_tribe: 'Unidentified',
+  type: 'Recovery Type',
+  type_code: 'heal',
+  valid_flg: 3,
+  enemy_flg: 'unit',
+  total_exp: 0,
+  hp: 6,
+  attack: 6,
+  defense: 6,
+  heal: 6,
+  skill_name: 'Omega Level Cleared!',
+  skill_comment: 'Right side QUEEN unit gains Anti-Hacking (max 1x) + Left side QUEEN unit gains Anti-Virus (max 1x) + Attribute panels to Green Panels, Hacking, Poison panels to SCP + QUEEN, Unidentified, Demon units gain 5000 ATK, REC.',
+  skill_cd: 6,
+  skill_param: [
+    {
+      effect: 'tolerance',
+      target: 'unit_queen/unit_right/and',
+      turn: '-1',
+      count: '1',
+      tolerance_effect: 'hacking',
+      animation: 'prevent_abnormal_Unit04'
+    },
+    {
+      effect: 'tolerance',
+      target: 'unit_queen/unit_left/and',
+      turn: '-1',
+      count: '1',
+      tolerance_effect: 'virus',
+      animation: 'prevent_abnormal_Unit04'
+    },
+    {
+      effect: 'force_change_block',
+      new_block: 'normal',
+      target: 'normal',
+      color: 'block_green',
+      count: '0',
+      val: '0'
+    },
+    {
+      effect: 'force_change_block',
+      new_block: 'crash',
+      target: 'hacking',
+      count: '0',
+      val: '12'
+    },
+    {
+      effect: 'force_change_block',
+      new_block: 'crash',
+      target: 'poison',
+      count: '0',
+      val: '12',
+      animation: 'change_block'
+    },
+    {
+      effect: 'enhance_unit',
+      target: 'unit_queen/unit_unknown/unit_demon/or',
+      turn: '-1',
+      status: 'attack',
+      val: '5000',
+      calc: 'add',
+      animation: 'enhance_unit_all_attack01_unit01'
+    },
+    {
+      effect: 'enhance_unit',
+      target: 'unit_queen/unit_unknown/unit_demon/or',
+      turn: '-1',
+      status: 'defense',
+      val: '5000',
+      calc: 'add',
+      animation: 'enhance_unit_all_defense01_unit01'
+    },
+    {
+      effect: 'enhance_unit',
+      target: 'unit_queen/unit_unknown/unit_demon/or',
+      turn: '-1',
+      status: 'heal',
+      val: '5000',
+      calc: 'add',
+      animation: 'enhance_unit_all_heal01_unit01'
+    }
+  ],
+  multiple_skill: [],
+  cskill_name: 'None',
+  cskill_comment: 'Damage to 1 enemy based on own REC (power: REC x60%) + Damage to 1 enemy (power: ATK x60%) + QUEEN, Unidentified, Demon units gain 50 ATK, DEF, REC.',
+  cskill_params: [
+    {
+      effect: 'damage_heal',
+      target: 'enemy_one',
+      color: 'green',
+      val: '1.2',
+      animation: 'damage_one_green04'
+    },
+    {
+      effect: 'damage',
+      target: 'enemy_one',
+      color: 'green',
+      val: '1.2',
+      animation: 'damage_one_green04'
+    },
+    {
+      effect: 'enhance_unit',
+      target: 'unit_queen/unit_unknown/unit_demon/or',
+      turn: '-1',
+      status: 'attack',
+      val: '50',
+      calc: 'add',
+      animation: 'enhance_unit_all_attack01_unit01'
+    },
+    {
+      effect: 'enhance_unit',
+      target: 'unit_queen/unit_unknown/unit_demon/or',
+      turn: '-1',
+      status: 'defense',
+      val: '50',
+      calc: 'add',
+      animation: 'enhance_unit_all_defense01_unit01'
+    },
+    {
+      effect: 'enhance_unit',
+      target: 'unit_queen/unit_unknown/unit_demon/or',
+      turn: '-1',
+      status: 'heal',
+      val: '50',
+      calc: 'add',
+      animation: 'enhance_unit_all_heal01_unit01'
+    }
+  ],
+  abilities: [
+    {
+      slot: 1,
+      bug: 1,
+      params: [Array],
+      name: '2 Tribe Front CP Drop',
+      comment: 'When QUEEN, Unidentified units are in front, Red Panels drop as front unit CP.'
+    },
+    {
+      slot: 2,
+      bug: 20,
+      params: [Array],
+      name: '2 Tribe Front CP Drop',
+      comment: 'When QUEEN, Demon units are in front, Yellow Panels drop as front unit CP.'
+    },
+    {
+      slot: 3,
+      bug: 40,
+      params: [Array],
+      name: '2 Tribe Heart Multi-ch Easy CP',
+      comment: 'QUEEN, Unidentified units gain Heart Multi-chain, require 24 fewer panels for CP.'
+    },
+    {
+      slot: 4,
+      bug: 60,
+      params: [Array],
+      name: '2 Tribe Blue Multi-chain Easy CP',
+      comment: 'QUEEN, Demon units gain Blue Panel Multi-chain, require 24 fewer panels for CP.'
+    }
+  ],
+  have_leader: 0,
+  serifs: [
+    { type: 'skill', frame: 'maru', serif: 'Stay at peace.' },
+    {
+      type: 'cskill',
+      frame: 'maru',
+      serif: 'I did it to protect you.'
+    },
+    {
+      type: 'cskill',
+      frame: 'kumo',
+      serif: 'A whispering in my mind?'
+    },
+    { type: 'cskill', frame: 'kumo', serif: 'What a gorgeous view.' },
+    {
+      type: 'cskill',
+      frame: 'kumo',
+      serif: 'I prefer poignant poetry'
+    }
+  ],
+  urlPicture: 'http://res.cloudinary.com/dt6uktwp7/image/upload/v1668832175/CF_unit/Picture/26025.png',
+  urlTMP: 'http://res.cloudinary.com/dt6uktwp7/image/upload/v1669180123/CF_unit/Icon/26025.png'
+}

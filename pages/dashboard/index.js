@@ -8,16 +8,11 @@ function Index({ data }) {
 
   const [nowUnit, setNowUnit] = useState()
   const [show, setShow] = useState()
-  // const [show, setShow] = useState(<>Not Have</>)
   const click_unit = (data) => {
     setNowUnit(data)
-    // setShow(<Now unit={data}></Now>)
     console.log(data)
   }
 
-  // const click_unit = useCallback((data) => {
-  //   setNowUnit(data)
-  // }, [nowUnit]);
 
   return (
     <div>
@@ -29,7 +24,7 @@ function Index({ data }) {
           <Now unit={nowUnit} />
           {/* {show} */}
         </div>
-        <div className='bg-red-200 flex flex-row flex-wrap justify-center'>
+        <div className='bg-red-200 flex flex-row flex-wrap gap-1 justify-center'>
           {data.map((item, i) => {
             return (
               <Unit unit={item} key={i} onClick={click_unit} />
@@ -62,7 +57,8 @@ async function combine_unitTMP(all_unit, all_tmp) {
       }
     }
     if (!havePic) {
-      all_unit[i].urlTMP = "/notFound.jpg"
+      // all_unit[i].urlTMP = `https://api-crashlibrary.cf/images/_hq/Unit${all_unit[i].character_id}.png`
+      all_unit[i].urlTMP = `https://api-crashlibrary.cf/images/_hq/Unit${15555}.png`
     }
   }
   return all_unit
