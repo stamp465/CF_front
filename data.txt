@@ -1,5 +1,5 @@
 {
-  _id: '63748b71c8d15150992b4eda',
+  _id: 'xxxx',
   character_id: 26025,
   rare: 6,
   max_level: 1,
