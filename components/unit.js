@@ -19,13 +19,16 @@ function Unit({ unit, key, onClick }) {
   return (
     <div>
 
-      <button onClick={() => onClick(unit)}
-        className={bgClass[unit.color]}>
+      <button
+        onClick={() => onClick(unit)}
+        className={bgClass[unit.color]}
+      >
         <img
           src={unit.urlTMP}
           alt={unit.character_id}
         />
       </button>
+
     </div>
   );
 }

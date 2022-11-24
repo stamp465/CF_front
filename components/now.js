@@ -1,54 +1,74 @@
 import React from "react";
 import { useEffect } from "react";
 
-function Now({ unit }) {
+function Now({ unit, addTeam }) {
+
+  const bgClass = {
+    green: `border-2 border-green-900 bg-green-500
+          rounded-tr-xl rounded-bl-xl rounded-tl-3xl rounded-br-3xl
+          overflow-hidden w-[80px] h-[80px] `,
+    blue: `border-2 border-blue-900 bg-blue-500
+          rounded-tr-xl rounded-bl-xl rounded-tl-3xl rounded-br-3xl
+          overflow-hidden w-[80px] h-[80px] `,
+    red: `border-2 border-red-900 bg-red-500
+          rounded-tr-xl rounded-bl-xl rounded-tl-3xl rounded-br-3xl
+          overflow-hidden w-[80px] h-[80px] `,
+    yellow: `border-2 border-yellow-900 bg-yellow-500
+          rounded-tr-xl rounded-bl-xl rounded-tl-3xl rounded-br-3xl
+          overflow-hidden w-[80px] h-[80px] `
+  }
+
   useEffect(() => {
     console.log("unit change")
   }, [unit])
 
-  const showData = (
-    <>
-
-      <div>{`${unit.name} [${unit.main_tribe},${unit.sub_tribe}] [${unit.type}]`}</div>
-      <div className="bg-blue-500 grid grid-cols-4">
-        <div className="flex justify-center items-center"><img
-          src={unit.urlTMP}
-          alt={unit.character_id}
-          width={100}
-          height={100}
-        /></div>
-        <div className="col-span-3">
-          <div>
-            <>Skill<br /></>
-            {`[${unit.skill_cd}CD] ${unit.skill_comment}`}
-          </div>
-          <div>
-            <>C-Skill<br /></>
-            <>{unit.cskill_comment}</>
-          </div>
-          <div>
-            {
-              unit.abilities.map((abi, i) => {
-                return (
-                  <>
-                    <div>{`Ability ${i + 1} [${abi.bug} bug]`}</div>
-                    <div>{abi.comment}</div>
-                  </>
-
-                )
-              })
-            }
-          </div>
-        </div>
-
-      </div>
-    </>
-  )
-
   return (
     <div>
       {unit ?
-        showData :
+        <>
+          <div>{`${unit.name} [${unit.main_tribe},${unit.sub_tribe}] [${unit.type}]`}</div>
+          <div className="bg-blue-500 flex">
+            <div className="flex justify-center items-center w-1/4">
+              <div className={bgClass[unit.color]}><img
+                src={unit.urlTMP}
+                alt={unit.character_id}
+              /></div>
+            </div>
+            <div className="flex justify-center items-center w-3/4 gap-4">
+              <label for="my-modal" className="btn">Details</label>
+              <button className="btn" onClick={() => { addTeam(unit) }}>Add to Team</button>
+            </div>
+          </div>
+
+          <input type="checkbox" id="my-modal" className="modal-toggle" />
+          <div className="modal">
+            <div className="modal-box">
+              <div>
+                <>Skill<br /></>
+                {`[${unit.skill_cd}CD] ${unit.skill_comment}`}
+              </div>
+              <div>
+                <>C-Skill<br /></>
+                <>{unit.cskill_comment}</>
+              </div>
+              <div>
+                {
+                  unit.abilities.map((abi, i) => {
+                    return (
+                      <>
+                        <div>{`Ability ${i + 1} [${abi.bug} bug]`}</div>
+                        <div>{abi.comment}</div>
+                      </>
+                    )
+                  })
+                }
+              </div>
+              <div className="modal-action">
+                <label for="my-modal" className="btn">Close</label>
+              </div>
+            </div>
+          </div>
+        </> :
         " Not have"
       }
     </div>
