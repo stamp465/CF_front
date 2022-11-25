@@ -35,7 +35,7 @@ function Now({ unit, addTeam }) {
               /></div>
             </div>
             <div className="flex justify-center items-center w-3/4 gap-4">
-              <label for="my-modal" className="btn">Details</label>
+              <label htmlFor="my-modal" className="btn">Details</label>
               <button className="btn" onClick={() => { addTeam(unit) }}>Add to Team</button>
             </div>
           </div>
@@ -44,27 +44,33 @@ function Now({ unit, addTeam }) {
           <div className="modal">
             <div className="modal-box">
               <div>
-                <>Skill<br /></>
-                {`[${unit.skill_cd}CD] ${unit.skill_comment}`}
+                <div>Skill<br /></div>
+                {unit.multiple_skill.length == 0 ?
+                  <div>{`[${unit.skill_cd}CD] ${unit.skill_comment}`}</div> :
+                  unit.multiple_skill.map((skill, i) => {
+                    // console.log(skill)
+                    return (<div key={i}>{`[${skill.cooldown}CD] ${skill.comment}`}</div>)
+                  })
+                }
               </div>
               <div>
-                <>C-Skill<br /></>
-                <>{unit.cskill_comment}</>
+                <div>C-Skill<br /></div>
+                <div>{unit.cskill_comment}</div>
               </div>
               <div>
                 {
                   unit.abilities.map((abi, i) => {
                     return (
-                      <>
+                      <div key={i}>
                         <div>{`Ability ${i + 1} [${abi.bug} bug]`}</div>
                         <div>{abi.comment}</div>
-                      </>
+                      </div>
                     )
                   })
                 }
               </div>
               <div className="modal-action">
-                <label for="my-modal" className="btn">Close</label>
+                <label htmlFor="my-modal" className="btn">Close</label>
               </div>
             </div>
           </div>

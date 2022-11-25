@@ -31,7 +31,7 @@ function Team({ team, removeTeam }) {
             src={unit.urlTMP}
             alt={unit.character_id}
           /></div>
-          <label for={String(unit._id)} className="btn">Details</label>
+          <label htmlFor={String(unit._id)} className="btn">Details</label>
           <button className="btn" onClick={() => { removeTeam(i) }}>Remove</button>
           <input type="checkbox" id={String(unit._id)} className="modal-toggle" />
           <div className="modal">
@@ -57,7 +57,7 @@ function Team({ team, removeTeam }) {
                 }
               </div>
               <div className="modal-action">
-                <label for={String(unit._id)} className="btn">Close</label>
+                <label htmlFor={String(unit._id)} className="btn">Close</label>
               </div>
             </div>
           </div>
