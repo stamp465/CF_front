@@ -130,6 +130,9 @@ async function combine_unitTMP(all_unit, all_tmp) {
 function filterdata(data, nowFilter) {
   let newdata = []
   data.map((unit, i) => {
+    let canRare = 0
+    if (unit.rare === 6) canRare = 1
+
     let canCost = 0
     if (nowFilter.cost.length === 0) canCost = 1
     else {
@@ -193,7 +196,7 @@ function filterdata(data, nowFilter) {
 
 
 
-    if ((canColor && canCost) && (canMain_tribe && canType)) {
+    if (((canColor && canCost) && (canMain_tribe && canType)) && canRare) {
       newdata = [...newdata, unit]
     }
   })
@@ -213,6 +216,7 @@ export async function getStaticProps(ctx) {
   console.log('finish')
   // console.log(combine_data[0])
   let filter = {}
+  filter.rare = 6
   // filter.cost = await list_filter(combine_data, 'cost')
   filter.cost = [99, 87, 69, 68, 65, 63, 60, 59, 58, 55, 53, 50, 48, 45, 40]
   // filter.color = await list_filter(combine_data, 'color')

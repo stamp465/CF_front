@@ -16,6 +16,7 @@ function Filter({ setFilter, filter }) {
     // console.log("main_tribes", main_tribes)
     // console.log("sub_tribes", sub_tribes)
     setFilter({
+      rare: 6,
       modeAND: modeAND,
       cost: costs,
       color: colors,
