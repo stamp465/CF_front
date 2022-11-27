@@ -102,47 +102,53 @@ function Filter({ setFilter, filter }) {
       <input type="checkbox" id="filter-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg ">Filter</h3>
-          <span className="">Use AND mode</span>
-          <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterAND(ev.target.checked) }} />
-          <p className="py-4">color</p>
+          <h3 className="font-bold text-xl text-center">Filter</h3>
+          <p className="mt-2 font-bold text-lg">color</p>
           {filter.color.map((color, i) => {
             return (
-              <div key={"color" + i} className="inline-flex items-center justify-center bg-blue-200 border-blue-900 border-2 w-20">
-                <span className="">{color}</span>
+              <div key={"color" + i} className="inline-flex items-center justify-start w-20 gap-0.5 px-1 py-0.5">
                 <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterColor(ev.target.checked, color) }} />
+                <span className="text-base">{color}</span>
               </div>
             )
           })}
-          <p className="py-4">cost</p>
+          <p className="mt-2 font-bold text-lg">cost</p>
           {filter.cost.map((cost, i) => {
             return (
-              <div key={"cost" + i} className="inline-flex items-center justify-center bg-red-200 border-red-900 border-2 w-20">
-                <span className="">{cost}</span>
+              <div key={"cost" + i} className="inline-flex items-center justify-start w-20 gap-0.5 px-1 py-0.5">
                 <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterCost(ev.target.checked, cost) }} />
+                <span className="">{cost}</span>
               </div>
             )
           })}
-          <p className="py-4">type</p>
+          <p className="mt-2 font-bold text-lg">type</p>
           {filter.type.map((type, i) => {
             return (
-              <div key={"type" + i} className="inline-flex items-center justify-center bg-orange-200 border-orange-900 border-2 w-48">
-                <span className="">{type}</span>
+              <div key={"type" + i} className="inline-flex items-center justify-start w-48 gap-0.5 px-1 py-0.5">
                 <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterType(ev.target.checked, type) }} />
+                <span className="">{type}</span>
               </div>
             )
           })}
-          <p className="py-4">main_tribe</p>
+          <div className="mt-2 ">
+            <span className="font-bold text-lg">Tribe</span>
+            <span className="inline-flex items-center justify-start w-48 gap-0.5 px-1 py-0.5">
+              <span className="">Use AND mode</span>
+              <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterAND(ev.target.checked) }} />
+            </span>
+
+          </div>
           {filter.main_tribe.map((main_tribe, i) => {
-            return (
-              <div key={"main_tribe" + i} className="inline-flex items-center justify-center bg-yellow-200 border-yellow-900 border-2 w-32">
-                <span className="">{main_tribe}</span>
-                <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterMain_tribes(ev.target.checked, main_tribe) }} />
-              </div>
-            )
+            if (main_tribe && main_tribe !== 'Sanrio Character')
+              return (
+                <div key={"main_tribe" + i} className="inline-flex items-center justify-start w-32 gap-0.5 px-1 py-0.5">
+                  <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterMain_tribes(ev.target.checked, main_tribe) }} />
+                  <span className="">{main_tribe}</span>
+                </div>
+              )
           })}
           <div className="modal-action">
-            <label htmlFor="filter-modal" className="btn" onClick={() => { sendBack() }}>Filter</label>
+            <label htmlFor="filter-modal" className="btn btn-outline border-4" onClick={() => { sendBack() }}>Filter</label>
           </div>
         </div>
       </div>
