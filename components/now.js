@@ -18,6 +18,27 @@ function Now({ unit, addTeam }) {
           overflow-hidden w-[80px] h-[80px] `
   }
 
+  const borderH = {
+    yellow: "font-bold text-base border-2 border-yellow-600 inline-block px-1 py-0.5 rounded-md",
+    green: "font-bold text-base border-2 border-green-600 inline-block px-1 py-0.5 rounded-md",
+    blue: "font-bold text-base border-2 border-blue-600 inline-block px-1 py-0.5 rounded-md",
+    red: "font-bold text-base border-2 border-red-600 inline-block px-1 py-0.5 rounded-md"
+  }
+
+  const borderS = {
+    yellow: "my-2 text-sm border-2 border-yellow-400 px-1 py-0.5 rounded-md",
+    green: "my-2 text-sm border-2 border-green-400 px-1 py-0.5 rounded-md",
+    blue: "my-2 text-sm border-2 border-blue-400 px-1 py-0.5 rounded-md",
+    red: "my-2 text-sm border-2 border-red-400 px-1 py-0.5 rounded-md"
+  }
+
+  const btn = {
+    blue: "btn btn-outline btn-info border-4 ",
+    green: "btn btn-outline btn-success border-4 ",
+    yellow: "btn btn-outline btn-warning border-4 ",
+    red: "btn btn-outline btn-error border-4 "
+  }
+
   useEffect(() => {
     console.log("unit change")
   }, [unit])
@@ -26,8 +47,9 @@ function Now({ unit, addTeam }) {
     <div>
       {unit ?
         <>
-          <div>{`${unit.name} [${unit.main_tribe},${unit.sub_tribe}] [${unit.type}]`}</div>
-          <div className="bg-blue-500 flex">
+          <div className="text-lg font-bold">{`${unit.name} `}</div>
+          <div className="text-base">{`[${unit.main_tribe},${unit.sub_tribe}] [${unit.type}]`}</div>
+          <div className="flex gap-4">
             <div className="flex justify-center items-center w-1/4">
               <div className={bgClass[unit.color]}><img
                 src={unit.urlTMP}
@@ -35,8 +57,8 @@ function Now({ unit, addTeam }) {
               /></div>
             </div>
             <div className="flex justify-center items-center w-3/4 gap-4">
-              <label htmlFor="my-modal" className="btn">Details</label>
-              <button className="btn" onClick={() => { addTeam(unit) }}>Add to Team</button>
+              <label htmlFor="my-modal" className={btn[unit.color]}>Details</label>
+              <button className={btn[unit.color]} onClick={() => { addTeam(unit) }}>Add to Team</button>
             </div>
           </div>
 
@@ -44,9 +66,9 @@ function Now({ unit, addTeam }) {
           <div className="modal">
             <div className="modal-box">
               <div>
-                <div>Skill<br /></div>
+                <div className={borderH[unit.color]}>Skill</div>
                 {unit.multiple_skill.length == 0 ?
-                  <div>{`[${unit.skill_cd}CD] ${unit.skill_comment}`}</div> :
+                  <div className={borderS[unit.color]}>{`[${unit.skill_cd}CD] ${unit.skill_comment}`}</div> :
                   unit.multiple_skill.map((skill, i) => {
                     // console.log(skill)
                     return (<div key={i}>{`[${skill.cooldown}CD] ${skill.comment}`}</div>)
@@ -54,23 +76,23 @@ function Now({ unit, addTeam }) {
                 }
               </div>
               <div>
-                <div>C-Skill<br /></div>
-                <div>{unit.cskill_comment}</div>
+                <div className={borderH[unit.color]}>C-Skill</div>
+                <div className={borderS[unit.color]}>{unit.cskill_comment}</div>
               </div>
               <div>
                 {
                   unit.abilities.map((abi, i) => {
                     return (
                       <div key={i}>
-                        <div>{`Ability ${i + 1} [${abi.bug} bug]`}</div>
-                        <div>{abi.comment}</div>
+                        <div className={borderH[unit.color]}>{`Ability ${i + 1} [${abi.bug} bug]`}</div>
+                        <div className={borderS[unit.color]}>{abi.comment}</div>
                       </div>
                     )
                   })
                 }
               </div>
               <div className="modal-action">
-                <label htmlFor="my-modal" className="btn">Close</label>
+                <label htmlFor="my-modal" className={btn[unit.color]}>Close</label>
               </div>
             </div>
           </div>

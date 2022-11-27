@@ -97,12 +97,12 @@ function Filter({ setFilter, filter }) {
 
   return (
     <div>
-      <label htmlFor="filter-modal" className="btn">Filter</label>
+      <label htmlFor="filter-modal" className="btn btn-outline border-4">Filter</label>
 
       <input type="checkbox" id="filter-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Filter</h3>
+          <h3 className="font-bold text-lg ">Filter</h3>
           <span className="">Use AND mode</span>
           <input type="checkbox" className="checkbox self-center" onClick={(ev) => { filterAND(ev.target.checked) }} />
           <p className="py-4">color</p>
