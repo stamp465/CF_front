@@ -29,7 +29,7 @@
 function test() {
   return (
     <div>
-      TEST
+      Enter
     </div>
   );
 }
