@@ -24,7 +24,7 @@ function Unit({ unit, key, onClick }) {
         className={bgClass[unit.color]}
       >
         <img
-          src={unit.urlTMP !== false ? 'data:image/png;base64,' + unit.urlTMP.slice(2, unit.urlTMP.length - 1) : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
+          src={unit.urlTMP}
           alt={unit.character_id}
         />
       </button>

@@ -5,6 +5,6 @@ export async function getUnitData() {
 }
 
 export async function getUnitTmpData() {
-  const res = await fetch(process.env.NEXT_API_URL + "/texttmps");
+  const res = await fetch(process.env.NEXT_API_URL + "/tmps");
   return res.json();
 }

@@ -16,9 +16,8 @@ export async function combine_unitTMP(all_unit, all_tmp) {
     if (!havePic) {
       // all_unit[i].urlTMP = `https://api-crashlibrary.cf/images/_hq/Unit${all_unit[i].character_id}.png`
       // all_unit[i].urlTMP = `https://api-crashlibrary.cf/images/_hq/Unit${15555}.png`
-      // all_unit[i].urlTMP = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
-      all_unit[i].urlTMP = false
-      // console.log(i)
+      all_unit[i].urlTMP = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+      // all_unit[i].urlTMP = false
     }
   }
   return all_unit
