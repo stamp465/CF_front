@@ -25,6 +25,13 @@ function Team({ team, removeTeam }) {
     red: "font-bold text-base border-2 border-red-600 inline-block px-1 py-0.5 rounded-md"
   }
 
+  const TextH = {
+    yellow: "font-bold text-base text-yellow-600 ",
+    green: "font-bold text-base text-green-600 ",
+    blue: "font-bold text-base text-blue-600 ",
+    red: "font-bold text-base text-red-600 "
+  }
+
   const borderS = {
     yellow: "my-2 text-sm border-2 border-yellow-400 px-1 py-0.5 rounded-md",
     green: "my-2 text-sm border-2 border-green-400 px-1 py-0.5 rounded-md",
@@ -47,10 +54,12 @@ function Team({ team, removeTeam }) {
     show = team.map((unit, i) => {
       return (
         <div key={"team" + i} className="flex flex-col gap-0.5">
-          <div className={bgClass[unit.color]}><img
-            src={unit.urlTMP}
-            alt={unit.character_id}
-          /></div>
+          <div className={bgClass[unit.color]}>
+            <img
+              src={unit.urlTMP !== false ? 'data:image/png;base64,' + unit.urlTMP.slice(2, unit.urlTMP.length - 1) : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
+              alt={unit.character_id}
+            />
+          </div>
           <label htmlFor={String(unit._id)} className="btn btn-xs">Details</label>
           <button className="btn btn-xs" onClick={() => { removeTeam(i) }}>Remove</button>
           <input type="checkbox" id={String(unit._id)} className="modal-toggle" />
@@ -62,7 +71,7 @@ function Team({ team, removeTeam }) {
                   <div className={borderS[unit.color]}>{`[${unit.skill_cd}CD] ${unit.skill_comment}`}</div> :
                   unit.multiple_skill.map((skill, i) => {
                     // console.log(skill)
-                    return (<div key={i}>{`[${skill.cooldown}CD] ${skill.comment}`}</div>)
+                    return (<div className={borderS[unit.color]} key={i}>{`[${skill.cooldown}CD] ${skill.comment}`}</div>)
                   })
                 }
               </div>
@@ -95,13 +104,87 @@ function Team({ team, removeTeam }) {
   }, [team])
 
   return (
-    <div className="flex justify-center items-center w-screen gap-4">
-      {
-        team.length !== 0 ?
-          showTeam :
-          <div className="font-bold text-2xl">{"Crash Fever Team Build"}</div>
-      }
+    <div>
+      <div className="flex justify-center items-center w-screen gap-4">
+        {
+          team.length !== 0 ?
+            showTeam :
+            <div className="font-bold text-2xl">{"Crash Fever Team Build"}</div>
+        }
+
+      </div>
+      <div className="flex justify-center items-center w-screen my-1">
+        {
+          team.length !== 0 ?
+            <label htmlFor={'Team-modal'} className="btn btn-sm">Team Details</label> : null
+        }
+        <input type="checkbox" id={'Team-modal'} className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box w-11/12 max-w-5xl">
+            <div className="font-bold text-center text-xl">Team Details</div>
+            {
+              team.map((unit, i) => {
+                return (
+                  <div key={'team' + i}>
+                    <div className={''}>
+                      <span className="font-bold">{'Unit ' + String(i + 1) + ' '}</span>
+                      <span className={TextH[unit.color]}>{unit.name}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="flex justify-center items-center w-1/8">
+                        <div className={bgClass[unit.color]}>
+                          <img
+                            src={unit.urlTMP !== false ? 'data:image/png;base64,' + unit.urlTMP.slice(2, unit.urlTMP.length - 1) : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
+                            alt={unit.character_id}
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col w-7/8 overflow-y-auto h-[150px]">
+                        <div>
+                          <div className={borderH[unit.color]}>Skill</div>
+                          {unit.multiple_skill.length == 0 ?
+                            <div className={borderS[unit.color]}>{`[${unit.skill_cd}CD] ${unit.skill_comment}`}</div> :
+                            unit.multiple_skill.map((skill, i) => {
+                              // console.log(skill)
+                              return (<div className={borderS[unit.color]} key={i}>{`[${skill.cooldown}CD] ${skill.comment}`}</div>)
+                            })
+                          }
+                        </div>
+                        <div>
+                          <div className={borderS[unit.color]}>
+                            <span className="font-bold">{'C-Skill '}</span>
+                            {unit.cskill_comment}
+                          </div>
+                        </div>
+                        <div>
+                          {
+                            unit.abilities.map((abi, i) => {
+                              return (
+                                <div key={i}>
+                                  <div className={borderS[unit.color]}>
+                                    <span className="font-bold">{`Ability ${i + 1} `}</span>
+                                    {abi.comment}
+                                  </div>
+                                </div>
+                              )
+                            })
+                          }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })
+            }
+            <div className="modal-action">
+              <label htmlFor={'Team-modal'} className={'btn btn-outline border-4 '}>Close</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
   );
 }
 

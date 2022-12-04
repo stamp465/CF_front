@@ -1,4 +1,5 @@
 export async function combine_unitTMP(all_unit, all_tmp) {
+
   for (let i = 0; i < all_unit.length; i++) {
     let havePic = 0;
     if (!all_unit[i].name) {
@@ -15,7 +16,9 @@ export async function combine_unitTMP(all_unit, all_tmp) {
     if (!havePic) {
       // all_unit[i].urlTMP = `https://api-crashlibrary.cf/images/_hq/Unit${all_unit[i].character_id}.png`
       // all_unit[i].urlTMP = `https://api-crashlibrary.cf/images/_hq/Unit${15555}.png`
-      all_unit[i].urlTMP = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+      // all_unit[i].urlTMP = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+      all_unit[i].urlTMP = false
+      // console.log(i)
     }
   }
   return all_unit

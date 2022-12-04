@@ -56,14 +56,14 @@ function Index({ data, filter }) {
   return (
     <div>
       <div className="flex flex-col justify-center ">
-        <div className='bg-slate-200 h-[160px] m-2 flex flex-col justify-center '>
+        <div className='bg-slate-200 h-[180px] m-2 flex flex-col justify-center '>
           <Team team={team} removeTeam={removeTeam} />
         </div>
         <div className="flex flex-row items-center justify-center gap-8 m-2 h-[140px]">
           <Filter setFilter={setFilter} filter={filter} />
           <Now unit={nowUnit} addTeam={addTeam} />
         </div>
-        <div className='border-4 border-black rounded-xl flex flex-row flex-wrap gap-2 justify-center overflow-auto h-[390px] p-8'>
+        <div className='border-4 border-black rounded-xl flex flex-row flex-wrap gap-2 justify-center overflow-auto h-[375px] p-8'>
           {chooseUnit.map((item, i) => {
             return (
               <Unit unit={item} key={i} onClick={click_unit} />

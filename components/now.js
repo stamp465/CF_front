@@ -51,10 +51,12 @@ function Now({ unit, addTeam }) {
           <div className="text-base">{`[${unit.main_tribe},${unit.sub_tribe}] [${unit.type}]`}</div>
           <div className="flex gap-4">
             <div className="flex justify-center items-center w-1/4">
-              <div className={bgClass[unit.color]}><img
-                src={unit.urlTMP}
-                alt={unit.character_id}
-              /></div>
+              <div className={bgClass[unit.color]}>
+                <img
+                  src={unit.urlTMP !== false ? 'data:image/png;base64,' + unit.urlTMP.slice(2, unit.urlTMP.length - 1) : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
+                  alt={unit.character_id}
+                />
+              </div>
             </div>
             <div className="flex justify-center items-center w-3/4 gap-4">
               <label htmlFor="my-modal" className={btn[unit.color]}>Details</label>
