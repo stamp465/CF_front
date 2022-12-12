@@ -5,6 +5,7 @@ export async function getUnitData() {
 }
 
 export async function getUnitTmpData() {
-  const res = await fetch(process.env.NEXT_API_URL + "/tmps");
+  // const res = await fetch(process.env.NEXT_API_URL + "/tmps");
+  const res = await fetch(process.env.NEXT_API_URL + "/imagekitTMPs");
   return res.json();
 }
